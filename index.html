@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>취향표 메이커</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+  <!-- CREATE MODE -->
+  <div id="createPage" class="page hidden">
+
+    <div class="container">
+
+      <h1>취향표 생성기</h1>
+
+      <div class="form-section">
+
+        <label>제목</label>
+        <input
+          id="titleInput"
+          type="text"
+          placeholder="예) tripleS 조합 취향표"
+        >
+
+      </div>
+
+      <div class="form-section">
+
+        <label>크레딧</label>
+        <input
+          id="creditInput"
+          type="text"
+          placeholder="예) made by 또리"
+        >
+
+      </div>
+
+      <div class="form-section">
+
+        <label>로고 이미지 URL</label>
+        <input
+          id="logoInput"
+          type="text"
+          placeholder="https://..."
+        >
+
+      </div>
+
+      <div class="form-section">
+
+        <label>멤버 목록 (최대 50명)</label>
+
+        <textarea
+          id="memberInput"
+          rows="18"
+          placeholder="한 줄에 한 명씩 입력&#10;예)&#10;지우&#10;유하&#10;서아"
+        ></textarea>
+
+      </div>
+
+      <button id="generateBtn" class="main-btn">
+        링크 생성
+      </button>
+
+      <div id="generatedArea" class="hidden">
+
+        <h3>생성 완료</h3>
+
+        <input
+          id="generatedLink"
+          readonly
+        >
+
+        <button id="copyBtn">
+          링크 복사
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- VIEW MODE -->
+  <div id="viewPage" class="page hidden">
+
+    <div class="topBar">
+
+      <button id="savePngBtn">
+        PNG 저장
+      </button>
+
+      <button id="resetBtn">
+        초기화
+      </button>
+
+    </div>
+
+    <div id="captureArea">
+
+      <div class="creditArea">
+        <span id="creditText"></span>
+      </div>
+
+      <div class="logoArea">
+
+        <img
+          id="logoImage"
+          class="hidden"
+          alt="logo"
+        >
+
+      </div>
+
+      <h1 id="tableTitle"></h1>
+
+      <div class="legend">
+
+        <div class="legend-item">
+          <span class="legend-color otp"></span>
+          OTP
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color like"></span>
+          좋아함
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color interest"></span>
+          관심 있음
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color none"></span>
+          관심 없음
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color nps"></span>
+          조합만(NPS)
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color dislike"></span>
+          별로임
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color mine"></span>
+          지뢰
+        </div>
+
+      </div>
+
+      <div class="tableWrapper">
+
+        <table id="shipTable">
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CONFIRM MODAL -->
+  <div id="modalOverlay" class="modal-overlay hidden">
+
+    <div class="modal">
+
+      <h3>초기화</h3>
+
+      <p>
+        정말 초기화하시겠습니까?
+      </p>
+
+      <div class="modal-buttons">
+
+        <button id="cancelReset">
+          취소
+        </button>
+
+        <button id="confirmReset">
+          초기화
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
